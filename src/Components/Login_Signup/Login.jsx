@@ -65,13 +65,13 @@ const Login = (props) => {
                     </div>
                     <div>
                         <button onClick={(e)=>{
-                            setOpen(()=>{
+                            setOpen(async ()=>{
                                 e.preventDefault();
                                 dispatch(submitDataLogin(list));
                                 if(list.valid && error.valid){
-                                    navigate(`/DashBoard/${list.login_username}`);
-                                    dispatch(updateMsgList(list.login_username));
-                                    dispatch(updateOnline(list.login_username,'Online'));
+                                    await dispatch(updateMsgList(list.login_username));
+                                    await dispatch(updateOnline(list.login_username,'Online'));
+                                    navigate(`/DashBoard/${list.login_username}`);         
                                 }
                                 dispatch(clearDataLogin());
                                 return (list.valid && error.valid)?false:true

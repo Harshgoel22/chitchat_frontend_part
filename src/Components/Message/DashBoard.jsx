@@ -28,7 +28,7 @@ const DashBoard = () => {
         if(iid==='logout'){
             // handle logout here
             await dispatch(updateOnline(id,'Offline'));
-            dispatch(logout(id));
+            await dispatch(logout(id));
             navigate('/');
         }
     }
