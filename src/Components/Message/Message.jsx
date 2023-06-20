@@ -32,8 +32,8 @@ const Message = ()=>{
     },[dispatch,search,id]);
 
     return (
-        <div className="main-div relative flex flex-row bg-gray-200 rounded-tr-md rounded-br-md">
-            <div className={`absolute lg:visible lg:relative flex flex-col left-part ${(msgBool===false)?'visible':'invisible'} min-h-full w-80 bg-gray-300`}>
+        <div className="main-div relative flex flex-row bg-gray-200 rounded-tr-md rounded-br-md ">
+            <div className={`absolute lg:visible lg:relative flex flex-col left-part ${(msgBool===false)?'visible':'invisible'} min-h-full w-80 bg-gray-300 rounded-lg lg:rounded-none`}>
                 <div className="upper-part flex flex-row p-6 pb-0">
                     <SortIcon style={{margin:"4px"}}/>
                     <h1 className="text-xl font-bold font-sans">Messages</h1>
