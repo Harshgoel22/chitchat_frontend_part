@@ -4,9 +4,10 @@ import { useEffect,useState } from 'react';
 import { BASE_URL } from '../../redux/base_url';
 import io from 'socket.io-client';
 import { useSelector,useDispatch } from 'react-redux';
-import { updateMsgList,sendMessage } from '../../redux/actions/message_action';
+import { updateMsgList,sendMessage, setMsgBool } from '../../redux/actions/message_action';
 import { ReceiverReply, SenderReply } from './SenderReply';
 import GridLoader from "react-spinners/GridLoader";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 const socket = io.connect(`${BASE_URL}`);
 
@@ -14,6 +15,7 @@ export const MsgRightBlock = (props)=>{
     const [msg,setMsg] = useState("");
     const dispatch = useDispatch();
     const recMsg = useSelector(state=>state.onChangeSearch.chatData);
+    const msgBool = useSelector(state=>state.onChangeSearch.boolean);
     const [on,setOn] = useState(props.online);
     const [loader, setLoader] = useState(false);
 
@@ -48,12 +50,15 @@ export const MsgRightBlock = (props)=>{
     },[sender,setList,dispatch,online,username]);
 
     return (
-        <div className="relative right-part w-[824px] min-h-full">
+        <div className={`absolute ${msgBool?'visible':'invisible'} w-[400px] lg:visible lg:relative right-part lg:w-[624px] xl:w-[824px] min-h-full`}>
             <div className="flex flex-row m-2 space-x-2">
                 <Avatar/>
                 <div className="relative flex flex-col min-w-full">
                     <p className="font-bold absolute">{props.fname} {props.lname}</p>
                     <p className="text-green-400 text-sm top-5 font-semibold absolute">{on}</p>
+                </div>
+                <div className='lg:invisible absolute right-8 top-3 w-8 h-8 rounded-full hover:bg-black bg-white hover:text-white' onClick={()=>{dispatch(setMsgBool(false))}}>
+                    <ArrowBackIcon sx={{paddingLeft: '4px', paddingTop: '2px'}}/>
                 </div>
             </div>
             <div className="h-1 min-w-full bg-gray-400"></div>
@@ -83,9 +88,9 @@ export const MsgRightBlock = (props)=>{
                     data-testid="loader"
                 />
             </div>
-            <div className="flex flex-row absolute bottom-0 m-2.5 h-12 rounded-lg w-[800px] bg-white">
+            <div className="flex flex-row absolute bottom-0 w-[370px] m-2.5 h-12 rounded-lg lg:w-[600px] xl:w-[800px] bg-white">
                 {/* <div onClick={()=>{setEmoji(prev=>!prev)}} className='p-2 pr-1'><InsertEmoticonIcon/></div> */}
-                <input type='text' value={msg} onChange={(e)=>{setMsg(e.target.value)}} className="p-3 rounded-lg outline-none min-h-full w-[740px]" placeholder="Write your message . . . ."></input>
+                <input type='text' value={msg} onChange={(e)=>{setMsg(e.target.value)}} className="p-3 rounded-lg outline-none min-h-full w-[320px] lg:w-[540px] xl:w-[740px]" placeholder="Write your message . . . ."></input>
                 <SendIcon onClick={()=>{
                     if(msg!==""){
                         sendMsg();

@@ -21,4 +21,6 @@ export const DELETE_CARD = "DELETE_CARD";
 export const DELETE_MSG = "DELETE_MSG";
 export const SET_SEARCH_LOADER = "SET_SEARCH_LOADER";
 
+export const SET_MSG_BOOL = "SET_MSG_BOOL";
+
 export const LOGOUT = "LOGOUT";

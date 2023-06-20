@@ -1,6 +1,6 @@
 import Avatar from "@mui/joy/Avatar/Avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRecentTab, onChangeSearch, updateMsgList, deleteCard } from "../../redux/actions/message_action";
+import { updateRecentTab, onChangeSearch, updateMsgList, deleteCard, setMsgBool } from "../../redux/actions/message_action";
 import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -55,8 +55,9 @@ const Card = (props)=>{
     }
 
     return (
-        <div id={props.index} onMouseOver={()=>{setDot(true)}} onMouseLeave={()=>{setDot(false)}} onClick={async (e)=>{ handleJs(e); handleCSS(e)}} 
-                className="card hover:bg-gray-700 relative flex flex-row card w-72 h-[65px] rounded-md m-2 p-2.5 mt-0 bg-gray-600">
+        <div id={props.index} onMouseOver={()=>{setDot(true)}} onMouseLeave={()=>{setDot(false)}} onClick={(e)=>{ handleJs(e); handleCSS(e)}} 
+                className="card hover:bg-gray-700 relative flex flex-row card w-72 h-[65px] rounded-md m-2 p-2.5 mt-0 bg-gray-600"
+                onDoubleClick={()=>{dispatch(setMsgBool(true));}}>
             {(dot===true)?
                 <div className="text-white absolute right-3 top-4" onClick={()=>{setDel((prev)=>{return !prev})}}>
                     <MoreVertIcon/>

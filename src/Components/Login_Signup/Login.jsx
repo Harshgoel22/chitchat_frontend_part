@@ -17,7 +17,7 @@ const Login = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div id="login_page" className="bg-gray-400 min-h-[500px] min-w-[320px] max-w-[340px] rounded-3xl mt-24 z-0 pb-6 left-80 absolute">
+        <div id="login_page" className={`bg-gray-400 min-h-[500px] min-w-[320px] max-w-[340px] rounded-3xl mt-24 z-0 pb-6 left-24 ${props.signup===false?'visible':'invisible'} sm:visible sm:left-14 absolute`}>
             <div className="intro">
                 <p className="text-white text-xl text-center pt-8 font-semibold">Welcome Back!</p>
                 <p className="text-white text-sm text-center mt-1">Login to continue</p>
@@ -31,7 +31,7 @@ const Login = (props) => {
                             dispatch(makeChangeLogin(e.target));
                             dispatch(loginChangeValidate(e.target, list));
                         }} value={list.login_username} type="text" name="login_username" placeholder="Username" className="bg-gray-300 placeholder:text-slate-500 placeholder:text-center rounded-md mt-8 p-[2px] w-60"></input>
-                        <p className="text-red-500 text-xs text-start pl-10 pt-0.5">{error.login_username}</p>
+                        <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_username}</p>
                     </div>
                     <div className="relative">
                         <div className="relative">
@@ -45,7 +45,7 @@ const Login = (props) => {
                             }} className="absolute top-2 right-14">
                                 {toggle.login_pasword?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye} />}
                             </button>
-                            <p className="text-red-500 text-xs text-start pl-10 pt-0.5">{error.login_pasword}</p>
+                            <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_pasword}</p>
                         </div>
                     </div>
                     <div className="relative">
@@ -61,22 +61,22 @@ const Login = (props) => {
                                 {toggle.login_confirm_pasword?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye} />}
                             </button>
                         </div>
-                        <p className="text-red-500 text-xs text-start pl-10 pt-0.5">{error.login_confirm_pasword}</p>
+                        <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_confirm_pasword}</p>
                     </div>
                     <div>
-                        <button onClick={(e)=>{
-                            setOpen(async ()=>{
-                                e.preventDefault();
-                                dispatch(submitDataLogin(list));
-                                if(list.valid && error.valid){
-                                    await dispatch(updateMsgList(list.login_username));
-                                    await dispatch(updateOnline(list.login_username,'Online'));
-                                    navigate(`/DashBoard/${list.login_username}`);         
-                                }
-                                dispatch(clearDataLogin());
+                        <button onClick={async (e)=>{
+                            e.preventDefault();
+                            dispatch(submitDataLogin(list));
+                            setOpen(()=>{
                                 return (list.valid && error.valid)?false:true
-                            })
-                        }} className="mt-4 bg-lime-500 w-60 p-1 rounded-md font-semibold">Login</button>
+                            });
+                            if(list.valid && error.valid){
+                                await dispatch(updateMsgList(list.login_username));
+                                await dispatch(updateOnline(list.login_username,'Online'));
+                                navigate(`/DashBoard/${list.login_username}`);         
+                                dispatch(clearDataLogin());
+                            }
+                        }} className="mt-4 bg-lime-500 w-60 p-2 hover:bg-lime-400 rounded-md font-semibold">Login</button>
                         {open&&<MyModal open={open} setOpen={setOpen}/>}
                     </div>
                 </form>

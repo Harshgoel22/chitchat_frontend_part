@@ -16,6 +16,7 @@ const Message = ()=>{
     // console.log(`msgData: ${msgData}`);
     const [listt, setList] = useState([]);
     const loader = useSelector(state=>state.onChangeSearch.loader);
+    const msgBool = useSelector(state=>state.onChangeSearch.boolean);
 
     const [msg,setMsg] = useState("");
     const [search, setSearch] = useState("");
@@ -27,7 +28,7 @@ const Message = ()=>{
 
     return (
         <div className="main-div relative flex flex-row bg-gray-200 rounded-tr-md rounded-br-md">
-            <div className="flex flex-col left-part min-h-full w-80 bg-gray-300">
+            <div className={`absolute lg:visible lg:relative flex flex-col left-part ${(msgBool===false)?'visible':'invisible'} min-h-full w-80 bg-gray-300`}>
                 <div className="upper-part flex flex-row p-6 pb-0">
                     <SortIcon style={{margin:"4px"}}/>
                     <h1 className="text-xl font-bold font-sans">Messages</h1>
@@ -62,7 +63,7 @@ const Message = ()=>{
             </div>         
             {/* right msg block */}
             {(Object.keys(msgData).length===0) ? 
-                <div className="absolute left-[620px] top-52 text-3xl text-center w-60">
+                <div className="xl:text-3xl lg:text-2xl absolute top-48 invisible lg:visible xl:left-[180%] lg:left-[160%] text-center lg:w-60">
                     <p>Search to connect with your friends and relatives</p>
                 </div> : 
                 <MsgRightBlock msg={msg} setMsg={setMsg} sender={id} list={listt} setList={setList} {...msgData}/>

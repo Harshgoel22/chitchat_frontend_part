@@ -26,11 +26,11 @@ export const SenderReply = (props)=>{
     }
 
     return (
-        <div key={itr1} className='relative flex flex-row'>
-            <div onClick={(e)=>{handleDelete(e)}} className={`del-${itr1} flex flex-row w-96 min-h-fit m-2 mr-0 p-1 ml-96 rounded-2xl rounded-tr-none bg-green-400`}>
+        <div key={itr1} className='relative flex flex-row ml-40 pr-4 lg:ml-80 xl:ml-96'>
+            <div onClick={(e)=>{handleDelete(e)}} className={`del-${itr1} flex flex-row w-40 lg:w-64 xl:w-96 min-h-fit m-2 mr-0 p-1  rounded-2xl rounded-tr-none bg-green-400`}>
                 <p className={`del-${itr1} p-1`}>{data.msg}</p>
             </div>
-            <div id={`del-${itr1}`} onClick={()=>{setOpen(prev=>!prev)}} className={`delIcon invisible absolute left-[360px]`}><DeleteIcon sx={{color: 'red'}}/></div>
+            <div id={`del-${itr1}`} onClick={()=>{setOpen(prev=>!prev)}} className={`delIcon invisible absolute -left-8 -top-0.5`}><DeleteIcon sx={{color: 'red'}}/></div>
             {(open===true)?<DeleteModal cond="send" itr={itr1} username={username} open={open} setOpen={setOpen}/>:null}
             <div className="w-8 h-8 m-1 p-0.5 rounded-full bg-gray-600">
                 <p className='text-white font-bold'>You</p>
@@ -63,16 +63,16 @@ export const ReceiverReply = (props)=>{
     }
 
     return (
-        <div key={itr1} className='flex flex-row relative ml-4'>
+        <div key={itr1} className='flex flex-row relative pl-4'>
             <div className="w-8 h-8 m-1.5 p-1 rounded-full flex flex-row space-x-0.5 bg-gray-600">
                 <p className='text-white font-bold'>{fname.slice(0,1)}</p>
                 <p className='text-white font-bold'>{lname.slice(0,1)}</p>
             </div>
-            <div id={`del-${itr1}`} onClick={()=>{setOpen(prev=>!prev)}} className={`delIcon invisible absolute right-[340px] -top-0.5`}><DeleteIcon sx={{color: 'red'}}/></div>
             {(open===true)?<DeleteModal cond="receive" itr={itr1} username={username} open={open} setOpen={setOpen}/>:null}
-            <div onClick={(e)=>{handleDelete(e)}} className={`del-${itr1} flex flex-row p-1 min-h-fit w-96 m-2 ml-0 rounded-2xl rounded-tl-none bg-green-100`}>
+            <div onClick={(e)=>{handleDelete(e)}} className={`del-${itr1} flex flex-row p-1 w-40 min-h-fit lg:w-64 xl:w-96 m-2 ml-0 rounded-2xl rounded-tl-none bg-green-100`}>
                 <p className={`del-${itr1} p-1`}>{data.msg}</p>
             </div> 
+            <div id={`del-${itr1}`} onClick={()=>{setOpen(prev=>!prev)}} className={`delIcon invisible absolute left-60 lg:left-[330px] xl:left-[460px] -top-0.5`}><DeleteIcon sx={{color: 'red'}}/></div>
         </div>
     )
 }

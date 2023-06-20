@@ -9,7 +9,7 @@ const MyModal = (props)=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="mt-[17%] ml-[42%] bg-gray-700 min-h-20 w-64 rounded-lg p-4 px-5">
+        <div className="mt-60 ml-[30%] xl:ml-[42%] bg-gray-700 min-h-20 w-64 rounded-lg p-4 px-5">
           <Typography id="modal-modal-title" variant="h6" component="h2" className='text-white font-bold text-lg'>
             Error
           </Typography>

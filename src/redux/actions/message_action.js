@@ -1,4 +1,4 @@
-import { ON_CHANGE_SEARCH, UPDATE_RECENT_TAB, UPDATE_MSG_LIST, UPDATE_ONLINE, DELETE_CARD, DELETE_MSG, SEND_MSG, SET_SEARCH_LOADER} from "./action_types";
+import { ON_CHANGE_SEARCH, UPDATE_RECENT_TAB, UPDATE_MSG_LIST, UPDATE_ONLINE, DELETE_CARD, DELETE_MSG, SEND_MSG, SET_SEARCH_LOADER, SET_MSG_BOOL} from "./action_types";
 import { BASE_URL } from "../base_url";
 
 export const onChangeSearch = (searchTag, id)=>{
@@ -121,6 +121,13 @@ export const sendMessage = (sender,receiver,msg)=>{
 export const setSearchLoader = (value)=>{
     return {
         type: SET_SEARCH_LOADER,
+        value: value
+    }
+}
+
+export const setMsgBool = (value)=>{
+    return {
+        type: SET_MSG_BOOL,
         value: value
     }
 }

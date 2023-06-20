@@ -1,10 +1,11 @@
-import { DELETE_CARD, DELETE_MSG, ON_CHANGE_SEARCH, SEND_MSG, SET_SEARCH_LOADER, UPDATE_MSG_LIST, UPDATE_RECENT_TAB } from "../../actions/action_types";
+import { DELETE_CARD, DELETE_MSG, ON_CHANGE_SEARCH, SEND_MSG, SET_MSG_BOOL, SET_SEARCH_LOADER, UPDATE_MSG_LIST, UPDATE_RECENT_TAB } from "../../actions/action_types";
 
 const initialState = {
     payload: [],
     msgData: {},
     chatData: [],
-    loader: false
+    loader: false,
+    boolean: false
 }
 
 export const reducer9 = (state=initialState,action)=>{
@@ -44,6 +45,11 @@ export const reducer9 = (state=initialState,action)=>{
             return {
                 ...state,
                 loader: action.value
+            }
+        case SET_MSG_BOOL:
+            return {
+                ...state,
+                boolean: action.value
             }
         default:
             return state;

@@ -44,21 +44,9 @@ const Signup = (props) => {
         let otp = firstdigit+sdigit+tdigit+fourthdigit;
         dispatch(verifyOTP(list.data.email,otp));
     }
-
-    // const submitBtn = (e)=>{
-    //     if(otpData.success==="Verified"){
-    //         dispatch(submitDataSignup(e, list.data, error.valid, list.valid));
-    //         if(error.valid&&list.valid){
-    //             navigate(`/DashBoard/${list.data.username}`);
-    //             dispatch(updateMsgList(list.data.username));
-    //             dispatch(updateOnline(list.data.username,'Online'));
-    //         }
-    //         dispatch(clearDataSignup());
-    //     }
-    // }
-
+    
     return (
-        <div id="signup_page" className="bg-gray-700 min-h-[570px] min-w-[340px] z-10 absolute pb-6 left-[550px] rounded-3xl mt-16">
+        <div id="signup_page" className={`bg-gray-700 min-h-[570px] min-w-[340px] z-10 ${props.signup===true?'visible':'invisible'} sm:visible absolute sm:left-72 left-24 pb-6 rounded-3xl mt-[40px]`}>
             <div className="intro">
                 <p className="text-white text-xl text-center pt-8 font-semibold">Welcome to our community</p>
                 <div className="pt-8 flex justify-center"><Avatar/></div>
@@ -98,16 +86,16 @@ const Signup = (props) => {
                             <p id="email" className="text-red-500 text-xs text-start pl-[50px] p-1">{error.email}</p>
                         </div>
                         <div id='whole_otp_div' className="flex flex-col">
-                            <button onClick={verifyEmail} id='verify_email' className="ml-auto mr-auto bg-green-600 rounded-md p-[1px] w-60 mt-0 mb-1">Verify Email</button>
+                            <button onClick={verifyEmail} id='verify_email' className="ml-auto mr-auto bg-green-600 rounded-md p-2 hover:bg-green-700 hover:text-white w-60 mt-0 mb-1">Verify Email</button>
                             <div id='otp_fields' className="invisible h-0">
                                 <div className="relative flex flex-row space-x-2 ml-[50px]">
                                     <input type='text' value={firstdigit} onChange={(e)=>{setFirstdigit(e.target.value)}} maxLength='1' className="success_otp w-5"></input>
                                     <input type='text' value={sdigit} onChange={(e)=>{setSdigit(e.target.value)}} maxLength='1' className="success_otp w-5"></input>
                                     <input type='text' value={tdigit} onChange={(e)=>{setTdigit(e.target.value)}} maxLength='1' className="success_otp w-5"></input>
                                     <input type='text' value={fourthdigit} onChange={(e)=>{setFourthdigit(e.target.value)}} maxLength='1' className="success_otp w-5"></input>
-                                    <button onClick={verifyOtp} id='verify_otp' className="success_otp w-32 rounded-md bg-green-600 text-white">Verify</button>
+                                    <button onClick={verifyOtp} id='verify_otp' className="success_otp w-32 rounded-md bg-green-600 p-1 text-white">Verify</button>
                                 </div>
-                                <div id='resend_otp' className="mt-1.5"><button onClick={verifyEmail} className="ml-auto mr-auto bg-red-600 rounded-md p-[1px] w-60">Resend OTP</button></div>
+                                <div id='resend_otp' className="mt-1.5"><button onClick={verifyEmail} className="ml-auto mr-auto bg-red-600 rounded-md p-1 w-60">Resend OTP</button></div>
                                 <p className={`otp_msg ${(otpData.success==="")?'text-red-500':'text-green-500'} text-xs text-start pl-[50px] p-1 w-[295px]`}>{otpData.error}{otpData.success}</p>
                             </div>
                         </div>
@@ -137,19 +125,19 @@ const Signup = (props) => {
                         <p className="text-red-500 text-xs text-start pl-[50px] p-1">{error.confirm_pasword}</p>
                     </div>
                     <div>
-                        <button onClick={(e)=>{
+                        <button onClick={async (e)=>{
+                            dispatch(submitDataSignup(e, list.data, error.valid, list.valid,otpData.success));
                             setOpen(()=>{
-                                dispatch(submitDataSignup(e, list.data, error.valid, list.valid,otpData.success));
-                                if(error.valid&&list.valid&&(otpData.success==="Verified")){
-                                    navigate(`/DashBoard/${list.data.username}`);
-                                    dispatch(updateMsgList(list.data.username));
-                                    dispatch(updateOnline(list.data.username,'Online'));
-                                }
-                                dispatch(clearDataSignup());
                                 return (error.valid&&list.valid&&(otpData.success==="Verified"))?false:true;
                             });
+                            if(error.valid&&list.valid&&(otpData.success==="Verified")){
+                                await dispatch(updateMsgList(list.data.username));
+                                await dispatch(updateOnline(list.data.username,'Online'));
+                                navigate(`/DashBoard/${list.data.username}`);
+                            }
+                            dispatch(clearDataSignup());
                             // submitBtn(e);
-                        }} className="mt-4 bg-lime-500 w-60 p-1 rounded-md font-semibold">Signup</button>
+                        }} className="mt-4 bg-lime-500 w-60 p-2 hover:bg-lime-400 rounded-md font-semibold">Signup</button>
                         {open&&<MyModal open={open} setOpen={setOpen}/>}
                     </div>
                 </form>
