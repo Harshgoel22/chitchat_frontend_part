@@ -8,7 +8,7 @@ import MessageIcon from '@mui/icons-material/Message';
 // import { useState } from 'react';
 import { updateOnline } from '../../redux/actions/message_action';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { logout } from '../../redux/actions/logout_action';
 
 const DashBoard = () => {
@@ -16,7 +16,7 @@ const DashBoard = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const msgBool = useSelector(state=>state.onChangeSearch.boolean);
+    // const msgBool = useSelector(state=>state.onChangeSearch.boolean);
 
     const handleClick = async (iid)=>{
         let items = document.querySelectorAll('.icons');
