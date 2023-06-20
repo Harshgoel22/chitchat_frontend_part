@@ -26,7 +26,7 @@ export const SenderReply = (props)=>{
     }
 
     return (
-        <div key={itr1} className='relative flex flex-row ml-40 pr-4 lg:ml-80 xl:ml-96'>
+        <div key={itr1} className='relative flex flex-row ml-24 pr-4 lg:ml-80 xl:ml-96'>
             <div onClick={(e)=>{handleDelete(e)}} className={`del-${itr1} flex flex-row w-40 lg:w-64 xl:w-96 min-h-fit m-2 mr-0 p-1  rounded-2xl rounded-tr-none bg-green-400`}>
                 <p className={`del-${itr1} p-1`}>{data.msg}</p>
             </div>

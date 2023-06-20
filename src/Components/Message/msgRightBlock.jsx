@@ -57,7 +57,7 @@ export const MsgRightBlock = (props)=>{
                     <p className="font-bold absolute">{props.fname} {props.lname}</p>
                     <p className="text-green-400 text-sm top-5 font-semibold absolute">{on}</p>
                 </div>
-                <div className='lg:invisible absolute right-8 top-3 w-8 h-8 rounded-full hover:bg-black bg-white hover:text-white' onClick={()=>{dispatch(setMsgBool(false))}}>
+                <div className='lg:invisible absolute right-24 top-3 w-8 h-8 rounded-full hover:bg-black bg-white hover:text-white' onClick={()=>{dispatch(setMsgBool(false))}}>
                     <ArrowBackIcon sx={{paddingLeft: '4px', paddingTop: '2px'}}/>
                 </div>
             </div>
@@ -88,9 +88,9 @@ export const MsgRightBlock = (props)=>{
                     data-testid="loader"
                 />
             </div>
-            <div className="flex flex-row absolute bottom-0 w-[370px] m-2.5 h-12 rounded-lg lg:w-[600px] xl:w-[800px] bg-white">
+            <div className="flex flex-row absolute bottom-0 w-[300px] m-2.5 h-12 rounded-lg lg:w-[600px] xl:w-[800px] bg-white">
                 {/* <div onClick={()=>{setEmoji(prev=>!prev)}} className='p-2 pr-1'><InsertEmoticonIcon/></div> */}
-                <input type='text' value={msg} onChange={(e)=>{setMsg(e.target.value)}} className="p-3 rounded-lg outline-none min-h-full w-[320px] lg:w-[540px] xl:w-[740px]" placeholder="Write your message . . . ."></input>
+                <input type='text' value={msg} onChange={(e)=>{setMsg(e.target.value)}} className="p-3 rounded-lg outline-none min-h-full w-[240px] lg:w-[540px] xl:w-[740px]" placeholder="Write your message . . . ."></input>
                 <SendIcon onClick={()=>{
                     if(msg!==""){
                         sendMsg();

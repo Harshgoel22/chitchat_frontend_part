@@ -35,7 +35,7 @@ const DashBoard = () => {
     return (
         <div className="bg-gray-400 min-h-screen overflow-x-hidden">
             <NavBar />
-            <div className={`flex relative h-[600px] ${msgBool?'w-[450px]':'w-[376px]'} lg:w-[1000px] xl:w-[1200px] bg-gray-200 rounded-md mt-8 ml-auto mr-auto`}>
+            <div className={`flex relative h-[600px] w-[376px] lg:w-[1000px] xl:w-[1200px] bg-gray-200 rounded-md mt-8 ml-auto mr-auto`}>
                 <div className=" relative flex flex-col sidebar min-h-full w-14 rounded-tl-md pl-4 justify-center pb-14 rounded-bl-md space-y-6 bg-gray-700">
                     <div id='msg' onClick={()=>{handleClick('msg')}} className="icons h-12 w-12 p-3 hover:bg-gray-400 absolute left-1 top-8 rounded-full bg-gray-500">
                         <Tooltip title="Message" size="md">
