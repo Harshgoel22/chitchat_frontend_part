@@ -37,7 +37,7 @@ const Message = ()=>{
                 <div className="upper-part flex flex-row p-6 pb-0">
                     <SortIcon style={{margin:"4px"}}/>
                     <h1 className="text-xl font-bold font-sans">Messages</h1>
-                    <div className="icons h-10 w-10 p-2 hover:bg-gray-400 absolute right-4 -top-1 mt-6 rounded-full" onClick={async ()=>{
+                    <div className="lg:invisible icons h-10 w-10 p-2 hover:bg-gray-400 absolute right-4 -top-1 mt-6 rounded-full" onClick={async ()=>{
                         await dispatch(updateOnline(id,'Offline'));
                         await dispatch(logout(id));
                         navigate('/');
