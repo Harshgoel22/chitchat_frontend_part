@@ -29,7 +29,7 @@ const Home = () => {
                 <p className="text-white text-5xl font-bold mt-32 ml-16">Hang out <p className="pt-2">anytime, anywhere</p></p>
                 <p className="text-white ml-16 mt-8 text-lg">ChitChat makes it easy and fun to stay close to your favourite people.</p>
             </div>
-            <div className="signup_login flex flex-row justify-center align-center max-w-md min-h-screen -ml-10 sm:ml-0 mt-10 xl:mt-0 md:ml-[12%] relative">
+            <div className="signup_login flex flex-row justify-center align-center max-w-md min-h-screen -ml-16 sm:ml-0 mt-10 xl:mt-0 md:ml-[12%] relative">
                 <Login manageUser={manageUser} signup={signup}/>
                 <Signup manageUser={manageUser} signup={signup}/>
             </div>

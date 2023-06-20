@@ -1,15 +1,20 @@
 import { useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
-import { onChangeSearch } from '../../redux/actions/message_action';
+import { useNavigate, useParams } from 'react-router-dom';
+import { onChangeSearch, updateOnline } from '../../redux/actions/message_action';
+import { logout } from '../../redux/actions/logout_action';
 import SortIcon from '@mui/icons-material/Sort';
 import Card from './Card';
+import Tooltip from '@mui/joy/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
 import { MsgRightBlock } from './msgRightBlock';
 import MoonLoader from "react-spinners/MoonLoader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const Message = ()=>{
     
     let itr=0;
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const list = useSelector(state=>state.onChangeSearch.payload);
     const msgData = useSelector(state=>state.onChangeSearch.msgData);
@@ -32,6 +37,15 @@ const Message = ()=>{
                 <div className="upper-part flex flex-row p-6 pb-0">
                     <SortIcon style={{margin:"4px"}}/>
                     <h1 className="text-xl font-bold font-sans">Messages</h1>
+                    <div className="icons h-10 w-10 p-2 hover:bg-gray-400 absolute right-4 -top-1 mt-6 rounded-full" onClick={async ()=>{
+                        await dispatch(updateOnline(id,'Offline'));
+                        await dispatch(logout(id));
+                        navigate('/');
+                    }}>
+                        <Tooltip title="Logout" size="md">
+                            <FontAwesomeIcon icon={faRightFromBracket} size="xl" style={{scale: '0.9' }} />
+                        </Tooltip>
+                    </div>
                 </div>
                 <div className="searchBar relative h-4 w-72 ml-auto mr-auto mt-2 p-4 rounded-md">
                     <input value={search} onChange={(e)=>{

@@ -8,7 +8,7 @@ import MessageIcon from '@mui/icons-material/Message';
 // import { useState } from 'react';
 import { updateOnline } from '../../redux/actions/message_action';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/actions/logout_action';
 
 const DashBoard = () => {
@@ -16,7 +16,7 @@ const DashBoard = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const msgBool = useSelector(state=>state.onChangeSearch.boolean);
+    const msgBool = useSelector(state=>state.onChangeSearch.boolean);
 
     const handleClick = async (iid)=>{
         let items = document.querySelectorAll('.icons');
@@ -35,8 +35,8 @@ const DashBoard = () => {
     return (
         <div className="bg-gray-400 min-h-screen overflow-x-hidden">
             <NavBar />
-            <div className={`flex relative h-[600px] w-[376px] lg:w-[1000px] xl:w-[1200px] bg-gray-200 rounded-md mt-8 ml-auto mr-auto`}>
-                <div className=" relative flex flex-col sidebar min-h-full w-14 rounded-tl-md pl-4 justify-center pb-14 rounded-bl-md space-y-6 bg-gray-700">
+            <div className={`flex relative h-[600px] w-[320px] lg:w-[1000px] xl:w-[1200px] bg-gray-200 rounded-md mt-8 ml-auto mr-auto`}>
+                <div className=" relative flex flex-col sidebar min-h-full lg:w-14 w-0 invisible lg:visible rounded-tl-md lg:pl-4 justify-center lg:pb-14 rounded-bl-md space-y-6 bg-gray-700">
                     <div id='msg' onClick={()=>{handleClick('msg')}} className="icons h-12 w-12 p-3 hover:bg-gray-400 absolute left-1 top-8 rounded-full bg-gray-500">
                         <Tooltip title="Message" size="md">
                             <MessageIcon className='msg' sx={{color: 'white', scale: '1.2'}}/>

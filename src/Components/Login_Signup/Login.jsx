@@ -31,7 +31,7 @@ const Login = (props) => {
                             dispatch(makeChangeLogin(e.target));
                             dispatch(loginChangeValidate(e.target, list));
                         }} value={list.login_username} type="text" name="login_username" placeholder="Username" className="bg-gray-300 placeholder:text-slate-500 placeholder:text-center rounded-md mt-8 p-[2px] w-60"></input>
-                        <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_username}</p>
+                        <p className="text-red-500 text-xs text-start pl-12 xl:pl-10 pt-0.5">{error.login_username}</p>
                     </div>
                     <div className="relative">
                         <div className="relative">
@@ -45,7 +45,7 @@ const Login = (props) => {
                             }} className="absolute top-2 right-14">
                                 {toggle.login_pasword?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye} />}
                             </button>
-                            <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_pasword}</p>
+                            <p className="text-red-500 text-xs text-start pl-12 xl:pl-10 pt-0.5">{error.login_pasword}</p>
                         </div>
                     </div>
                     <div className="relative">
@@ -61,7 +61,7 @@ const Login = (props) => {
                                 {toggle.login_confirm_pasword?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye} />}
                             </button>
                         </div>
-                        <p className="text-red-500 text-xs text-start pl-[50px] xl:pl-10 pt-0.5">{error.login_confirm_pasword}</p>
+                        <p className="text-red-500 text-xs text-start pl-12 xl:pl-10 pt-0.5">{error.login_confirm_pasword}</p>
                     </div>
                     <div>
                         <button onClick={async (e)=>{
