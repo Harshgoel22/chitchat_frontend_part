@@ -79,7 +79,7 @@ export const MsgRightBlock = (props)=>{
                     })} */}
                 </div>
             </div>
-            <div className='absolute left-96 top-64'>
+            <div className='absolute xl:left-96 lg:left-[300px] left-36 top-64'>
                 <GridLoader
                     loading={loader}
                     size={10}

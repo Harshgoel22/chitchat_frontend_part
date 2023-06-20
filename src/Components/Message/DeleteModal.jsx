@@ -17,7 +17,7 @@ const DeleteModal = (props)=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="lg:mt-[20%] lg:ml-[42%] mt-60 ml-60 min-h-fit flex flex-col justify-center bg-gray-800 min-h-20 w-64 rounded-lg p-4 px-5">
+        <div className="mt-60 ml-auto mr-auto min-h-fit flex flex-col justify-center bg-gray-800 min-h-20 w-64 rounded-lg p-4 px-5">
             <div onClick={async ()=>{
                 await dispatch(deleteMsg(id,username,'myself',itr));
                 socket.emit("delMessage",({itr}));

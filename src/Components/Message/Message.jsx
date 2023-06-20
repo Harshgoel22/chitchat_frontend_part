@@ -49,18 +49,18 @@ const Message = ()=>{
                         })}
                     </div>
                 </div>
-                {loader?
-                    <div className='absolute left-32 top-44'>
-                        <MoonLoader
-                            loading={loader}
-                            size={50}
-                            color={'red'}
-                            aria-label="Loading Spinner"
-                            data-testid="loader"
-                        />
-                    </div>
-                :null}
-            </div>         
+            </div>    
+            {loader?
+                <div className='absolute left-32 top-44'>
+                    <MoonLoader
+                        loading={loader}
+                        size={50}
+                        color={'red'}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
+            :null}     
             {/* right msg block */}
             {(Object.keys(msgData).length===0) ? 
                 <div className="xl:text-3xl lg:text-2xl absolute top-48 invisible lg:visible xl:left-[180%] lg:left-[160%] text-center lg:w-60">
